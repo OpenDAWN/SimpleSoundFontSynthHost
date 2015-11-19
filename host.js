@@ -32,19 +32,6 @@ WebMIDI.host = (function()
 		// The preset indices in the soundFont (only one in this case).
 		presets = [0];
 
-		function getSoundFontPresets(presets)
-		{
-			var i, name, presetIndex, soundFontPresets = [];
-			for(i = 0; i < presets.length; ++i)
-			{
-				presetIndex = presets[i];
-				name = WebMIDI.constants.GeneralMIDIInstrumentNames[presetIndex];
-
-				soundFontPresets.push({ name: name, presetIndex: presetIndex });
-			}
-			return soundFontPresets;
-		}
-
 		function onLoad()
 		{
 			var
@@ -63,10 +50,7 @@ WebMIDI.host = (function()
 			fontLoadedDiv.style.display = "block";
 		}
 
-		// the soundFontPresets become the soundFont.presets attribute, usable by the host.
-		soundFontPresets = getSoundFontPresets(presets);
-
-		soundFont = new WebMIDI.soundFont.SoundFont(soundFontURL, soundFontName, soundFontPresets, onLoad);
+		soundFont = new WebMIDI.soundFont.SoundFont(soundFontURL, soundFontName, presets, onLoad);
 	},
 
 	gitHubButtonClick = function()
