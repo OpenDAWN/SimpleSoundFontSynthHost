@@ -1,6 +1,7 @@
 # Simple Sound Font Synth Host
 This is a simple demonstration of how to include a Web MIDI Synth [1] that uses soundFonts in a Web application.<br/>
-It can be tried out at http://james-ingram-act-two.de/open-source/SimpleSoundFontSynthHost/host.html.
+It can be tried out at<br />
+http://james-ingram-act-two.de/open-source/SimpleSoundFontSynthHost/host.html.
 
 To use the Synth in a new project, do the following:<br />
 1. copy the WebMIDI and sf2Synth1 folders from here or from [2] to the new project<br />
