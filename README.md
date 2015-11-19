@@ -24,7 +24,7 @@ Web MIDI Synths can be used without invoking the browser's implementation of the
 Standard MIDI Web MIDI Synths (like this one) can also be used interchangeably with the hardware devices supplied by those 
 browser implementations.<br />
 
-I am not a Web Audio specialist, and there are currently some issues. Help would be much appreciated in ironing them out.
+I am not a Web Audio specialist, and there are currently some issues. Help would be much appreciated in ironing them out. See [5], [6] and [7].
 
 November 2015,
 James Ingram
@@ -32,4 +32,7 @@ James Ingram
 [1] My definition: A "Web MIDI Synth" is a software synth that implements the Web MIDI API for Output Devices.<br />
 [2] https://github.com/notator/WebMIDISynthHost<br />
 [3] https://github.com/WebAudio/web-midi-api/issues/124<br />
-[4] https://github.com/gree/sf2synth.js
+[4] https://github.com/gree/sf2synth.js<br />
+[5] https://github.com/notator/WebMIDISynthHost/issues/6
+[6] https://github.com/notator/WebMIDISynthHost/issues/7
+[7] https://github.com/notator/WebMIDISynthHost/issues/8
