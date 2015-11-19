@@ -39,7 +39,7 @@ WebMIDI.host = (function()
 			waitingForFontDiv = document.getElementById("waitingForFontDiv"),
 			fontLoadedDiv = document.getElementById("fontLoadedDiv");
 
-			soundFont.getAttributes();
+			soundFont.init();
 
 			synth = new WebMIDI.sf2Synth1.Sf2Synth1();
 			synth.init();
