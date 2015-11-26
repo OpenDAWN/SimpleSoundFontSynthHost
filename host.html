@@ -8,7 +8,6 @@
 </head>
 <body>
 	<div id="cursorControlDiv" style="cursor:wait">
-
 		<div id="appDiv" class="app">
 			<table style="width:400px">
 				<tr>
@@ -34,14 +33,7 @@
 					To use this demo, hover your mouse over the coloured areas below.<br />
 					Moving the mouse over an area sends the synth a noteOn message.<br />
 					Moving it out again sends the corresponding noteOff.<br />
-					I am not a Web Audio specialist, and need help in solving some issues with this synthesizer.
-					These issues include the following problems:<br />
 				</span>
-				<ol style="margin:0 auto 0 auto">
-					<li>The synth does not react immediately to the first noteOn it receives.</li>
-					<li>When playing the piano patch, noteOffs do not take effect immediately if they come too soon.</li>
-				</ol>
-				<span>See issues #6, #7 and #8 in the main WebMIDISynthHost project.</span>
 				<table style="width:400px">
 					<tr onmouseover="WebMIDI.host.doMouseOver(event)" onmouseout="WebMIDI.host.doMouseOut(event)">
 						<td class="panel" id="64" style="background-color:red;" />

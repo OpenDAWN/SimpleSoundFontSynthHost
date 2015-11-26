@@ -5,8 +5,7 @@
 *  Code licensed under MIT
 */
 
-/*jslint bitwise: false, nomen: true, plusplus: true, white: true */
-/*global WebMIDI: false,  WebMIDISynth: false, window: false,  document: false, performance: false, console: false, alert: false, XMLHttpRequest: false */
+/*global WebMIDI, performance */
 
 WebMIDI.namespace('WebMIDI.host');
 
@@ -25,7 +24,6 @@ WebMIDI.host = (function()
 	{
 		var
 		soundFont,
-		soundFontPresets,
 		soundFontURL = "http://james-ingram-act-two.de/open-source/WebMIDISynthHost/soundFonts/Arachno/Arachno1.0selection-grand piano.sf2",
 		// The name used to identify the soundFont in the GUI (can be chosen ad lib.).
 		soundFontName = "grand piano",		
@@ -34,10 +32,20 @@ WebMIDI.host = (function()
 
 		function onLoad()
 		{
-			var
-			cursorControlDiv = document.getElementById("cursorControlDiv"),
-			waitingForFontDiv = document.getElementById("waitingForFontDiv"),
-			fontLoadedDiv = document.getElementById("fontLoadedDiv");
+			function switchToFontLoadedDiv()
+			{
+				var
+				cursorControlDiv = document.getElementById("cursorControlDiv"),
+				waitingForFontDiv = document.getElementById("waitingForFontDiv"),
+				fontLoadedDiv = document.getElementById("fontLoadedDiv");
+
+				if(waitingForFontDiv.style.display !== "none")
+				{
+					cursorControlDiv.style.cursor = "auto";
+					waitingForFontDiv.style.display = "none";
+					fontLoadedDiv.style.display = "block";
+				}
+			}
 
 			soundFont.init();
 
@@ -45,9 +53,24 @@ WebMIDI.host = (function()
 			synth.init();
 			synth.setSoundFont(soundFont);
 
-			cursorControlDiv.style.cursor = "auto";
-			waitingForFontDiv.style.display = "none";
-			fontLoadedDiv.style.display = "block";
+			// For some reason, the first noteOn to be sent by the host, reacts only after a delay.
+			// This noteOn/noteOff pair is sent so that the *next* noteOn will react immediately.
+			// This is actually a kludge. I have been unable to solve the root problem.
+			// (Is there an uninitialized buffer somewhere?)
+			if(synth.setMasterVolume)
+			{
+				// consoleSf2Synth can't/shouldn't do this.
+				// (It has no setMasterVolume function)
+				synth.setMasterVolume(0);
+				synth.noteOn(0, 64, 100);
+				synth.noteOff(0, 64, 100);
+				// Wait for the above noteOn/noteOff kludge to work.
+				setTimeout(function()
+				{
+					synth.setMasterVolume(16384);
+					switchToFontLoadedDiv();
+				}, 2400);
+			}
 		}
 
 		soundFont = new WebMIDI.soundFont.SoundFont(soundFontURL, soundFontName, presets, onLoad);
