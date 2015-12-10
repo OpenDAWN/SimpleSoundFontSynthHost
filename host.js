@@ -24,7 +24,7 @@ WebMIDI.host = (function()
 	{
 		var
 		soundFont,
-		soundFontURL = "http://james-ingram-act-two.de/open-source/WebMIDISynthHost/soundFonts/Arachno/Arachno1.0selection-grand piano.sf2",
+		soundFontURL = "http://james-ingram-act-two.de/soundFonts/Arachno/Arachno1.0selection-grand piano.sf2",
 		// The name used to identify the soundFont in the GUI (can be chosen ad lib.).
 		soundFontName = "grand piano",		
 		// The preset indices in the soundFont (only one in this case).
